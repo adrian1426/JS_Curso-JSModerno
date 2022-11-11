@@ -1,0 +1,1 @@
+console.log("%c Hola amigo", 'color:blue');
