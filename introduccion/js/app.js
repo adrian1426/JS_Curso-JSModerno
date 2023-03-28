@@ -1,5 +1,23 @@
-let a = 2, b = 3, c = 'Hola ', d = 'Goku', x = a + b;
+// const fruits = ['Manzana', 'Pera', 'Ciruela', 'Banana', 'Uva'];
 
-const saludo = c + d;
+// const [manzana, miPera] = fruits;
+// console.log(`fruta: ${manzana} y ${miPera}`);
 
-c = 'Hello again';
+// const { 2: fruta3, 0: fruta1 } = fruits;
+// console.log(`fruta: ${fruta3} y ${fruta1}`);
+
+
+const miObjeto = {
+  name: 'Kawaki',
+  age: 23,
+  lastName: 'Uzumaki',
+  gender: 'male'
+};
+
+const entries = Object.entries(miObjeto);
+console.log(entries);
+
+
+const fun = function () {
+  console.log('ahajaj')
+}
