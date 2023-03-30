@@ -20,4 +20,10 @@ const crearDeck = () => {
   return deck;
 };
 
+const pedirCarta = () => {
+  const carta = deck.shift();
+  return carta;
+};
+
 crearDeck();
+console.log("carta: ", pedirCarta());
