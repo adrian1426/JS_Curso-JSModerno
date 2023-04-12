@@ -61,4 +61,12 @@ btnPedirCarta.addEventListener('click', function () {
   imgCarta.classList.add('carta');
 
   divJugadorCartas.append(imgCarta);
+
+  if (puntosJugador > 21) {
+    console.log('Ha perdido el juego');
+    btnPedirCarta.disabled = true;
+  } else if (puntosJugador === 21) {
+    console.log('21, ¡Genial!');
+    btnPedirCarta.disabled = true;
+  }
 });
