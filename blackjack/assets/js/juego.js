@@ -46,6 +46,7 @@ let puntosComputadora = 0;
 
 const btnPedirCarta = document.querySelector('#btnPedirCarta');
 const puntosJugadorHtml = document.querySelectorAll('small')[0];
+const divJugadorCartas = document.querySelector('#jugador-cartas');
 
 btnPedirCarta.addEventListener('click', function () {
   const carta = pedirCarta();
@@ -53,4 +54,11 @@ btnPedirCarta.addEventListener('click', function () {
 
   puntosJugador = puntosJugador + valor;
   puntosJugadorHtml.innerText = puntosJugador;
+
+  //<img class="carta" src="assets/cartas/10C.png" alt="carta" />
+  const imgCarta = document.createElement('img');
+  imgCarta.src = `assets/cartas/${carta}.png`;
+  imgCarta.classList.add('carta');
+
+  divJugadorCartas.append(imgCarta);
 });
