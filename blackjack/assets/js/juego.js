@@ -40,5 +40,17 @@ const valorCarta = (carta) => {
 
 
 crearDeck();
-const carta = pedirCarta();
-const valor = valorCarta(carta);
+
+let puntosJugador = 0;
+let puntosComputadora = 0;
+
+const btnPedirCarta = document.querySelector('#btnPedirCarta');
+const puntosJugadorHtml = document.querySelectorAll('small')[0];
+
+btnPedirCarta.addEventListener('click', function () {
+  const carta = pedirCarta();
+  const valor = valorCarta(carta);
+
+  puntosJugador = puntosJugador + valor;
+  puntosJugadorHtml.innerText = puntosJugador;
+});
