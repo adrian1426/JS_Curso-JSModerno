@@ -46,7 +46,29 @@ let puntosComputadora = 0;
 
 const btnPedirCarta = document.querySelector('#btnPedirCarta');
 const puntosJugadorHtml = document.querySelectorAll('small')[0];
+const puntosComputadoraHtml = document.querySelectorAll('small')[1];
 const divJugadorCartas = document.querySelector('#jugador-cartas');
+const divComputadoraCartas = document.querySelector('#computadora-cartas');
+
+const turnoComputadora = (puntosMinimo) => {
+  do {
+    const carta = pedirCarta();
+    const valor = valorCarta(carta);
+
+    puntosComputadora = puntosComputadora + valor;
+    puntosComputadoraHtml.innerText = puntosComputadora;
+
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${carta}.png`;
+    imgCarta.classList.add('carta');
+
+    divComputadoraCartas.append(imgCarta);
+
+    if (puntosMinimo > 21) {
+      break;
+    }
+  } while ((puntosComputadora < puntosMinimo) && (puntosMinimo <= 21));
+};
 
 btnPedirCarta.addEventListener('click', function () {
   const carta = pedirCarta();
@@ -65,8 +87,10 @@ btnPedirCarta.addEventListener('click', function () {
   if (puntosJugador > 21) {
     console.log('Ha perdido el juego');
     btnPedirCarta.disabled = true;
+    turnoComputadora(puntosJugador);
   } else if (puntosJugador === 21) {
     console.log('21, ¡Genial!');
     btnPedirCarta.disabled = true;
+    turnoComputadora(puntosJugador);
   }
 });
