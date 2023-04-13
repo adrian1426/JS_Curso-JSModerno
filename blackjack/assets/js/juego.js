@@ -44,6 +44,7 @@ crearDeck();
 let puntosJugador = 0;
 let puntosComputadora = 0;
 
+const btnDetenerJuego = document.querySelector('#btnDetenerJuego');
 const btnPedirCarta = document.querySelector('#btnPedirCarta');
 const puntosJugadorHtml = document.querySelectorAll('small')[0];
 const puntosComputadoraHtml = document.querySelectorAll('small')[1];
@@ -87,10 +88,18 @@ btnPedirCarta.addEventListener('click', function () {
   if (puntosJugador > 21) {
     console.log('Ha perdido el juego');
     btnPedirCarta.disabled = true;
+    btnDetenerJuego.disabled = true;
     turnoComputadora(puntosJugador);
   } else if (puntosJugador === 21) {
     console.log('21, ¡Genial!');
     btnPedirCarta.disabled = true;
+    btnDetenerJuego.disabled = true;
     turnoComputadora(puntosJugador);
   }
+});
+
+btnDetenerJuego.addEventListener('click', function () {
+  btnPedirCarta.disabled = true;
+  btnDetenerJuego.disabled = true;
+  turnoComputadora(puntosJugador);
 });
