@@ -1,4 +1,4 @@
-(
+const juegoModule = (
   () => {
     'use strict';
 
@@ -7,6 +7,8 @@
     const especiales = ['A', 'J', 'K', 'Q'];
 
     const crearDeck = () => {
+      deck = [];
+
       for (let i = 2; i < 10; i++) {
         for (const tipo of tipos) {
           deck.push(`${i}${tipo}`);
@@ -42,7 +44,9 @@
       return puntos;
     };
 
-    deck = crearDeck();
+    const incializarJuego = () => {
+      deck = crearDeck();
+    };
 
     let puntosJugador = 0;
     let puntosComputadora = 0;
@@ -139,6 +143,11 @@
       divJugadorCartas.innerHTML = '';
       divComputadoraCartas.innerHTML = '';
     });
+
+
+    return {
+      incializarJuego
+    }
 
   }
 )();
