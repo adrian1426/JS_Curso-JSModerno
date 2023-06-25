@@ -9,7 +9,16 @@ class Persona {
     this.codigo = codigo;
     this.frase = frase;
   }
+
+  quienSoy() {
+    console.log(`Mi nombre es ${this.nombre} y me conocen como ${this.codigo}`);
+  }
+
+  miFrase() {
+    console.log(`${this.codigo} dice: ${this.frase}`);
+  }
 }
 
 const juan = new Persona('Juan', 'HEHA', 'Piensa rápidp');
-console.log(juan)
+juan.quienSoy();
+juan.miFrase();
