@@ -29,9 +29,22 @@ class Persona {
   }
 }
 
-const juan = new Persona('Juan', 'HEHA', 'Piensa rápidp');
-juan.quienSoy();
-juan.miFrase();
-juan.setComidaFavorita = 'Pae de quesp';
+class Heroe extends Persona {
+  clan = '';
 
-console.log(juan.getComidaFavorita)
+  constructor(nombre, codigo, frase) {
+    super(nombre, codigo, frase);
+  }
+
+  getPersona() {
+    return this.nombre;
+  }
+
+  getPersona2() {
+    return super.quienSoy();
+  }
+}
+
+const spriterman = new Heroe('spriterman', 'sprider', 'corran todos');
+console.log(spriterman.getPersona())
+spriterman.getPersona2()
