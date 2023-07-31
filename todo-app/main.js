@@ -1,3 +1,4 @@
-import './style.css'
+import { App } from './src/todos/app';
+import './style.css';
 
-console.log("Hello Bro");
+App('#app');
