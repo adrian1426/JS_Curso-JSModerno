@@ -23,21 +23,56 @@ const loadStore = () => {
   throw new Error('loadStore No implementado');
 };
 
-const addTodo = (description) => { };
+const getTodos = (filter = filtersValue.All) => {
+  switch (filter) {
+    case filtersValue.All:
+      return state.todos;
+    case filtersValue.Pending:
+      return state.todos.filter(t => !t.done);
+    case filtersValue.Completed:
+      return state.todos.filter(t => t.done);
+    default:
+      return state.todos;
+  }
+};
 
-const toggleTodo = (todoId) => { };
+const addTodo = (description) => {
+  if (!description) {
+    throw new Error('Description debe tener un valor');
+  }
 
-const deleteTodo = (todoId) => { };
+  state.todos.push(new TodoModel(description));
+};
 
-const deleteTodoCompleted = () => { };
+const toggleTodo = (todoId) => {
+  state.todos = state.todos.map(todo => {
+    return {
+      ...todo,
+      done: todo.id === todoId ? !todo.done : todo.done
+    };
+  });
+};
 
-const setfilterTodos = (filter = filtersValue.All) => { };
+const deleteTodo = (todoId) => {
+  state.todos = state.todos.filter(todo => todo.id !== todoId);
+};
 
-const getCurrentFilter = () => { };
+const deleteTodoCompleted = () => {
+  state.todos = state.todos.filter(todo => !todo.done);
+};
+
+const setfilterTodos = (filter = filtersValue.All) => {
+  state.filter = filter;
+};
+
+const getCurrentFilter = () => {
+  return state.filter;
+};
 
 export default {
   initStore,
   loadStore,
+  getTodos,
   addTodo,
   toggleTodo,
   deleteTodo,
