@@ -29,4 +29,12 @@ export const App = (elementId) => {
     displayTodos();
     descriptioTodo.value = '';
   });
+
+  const divCheckList = document.querySelector('#todo-list');
+
+  divCheckList.addEventListener('click', (e) => {
+    const elementWithId = e.target.closest('[data-id]');
+    store.toggleTodo(elementWithId.getAttribute('data-id'));
+    displayTodos();
+  });
 };
