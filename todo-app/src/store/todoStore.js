@@ -6,21 +6,23 @@ const filtersValue = {
   Pending: 'PENDING'
 };
 
-const state = {
-  todos: [
-    new TodoModel('Leer clean code book'),
-    new TodoModel('Salir a correr 30 minutos')
-  ],
+let state = {
+  todos: [],
   filter: filtersValue.All
 };
 
 const initStore = () => {
-  console.log(state);
-  console.log('init store inicializado');
+  loadStore();
 };
 
 const loadStore = () => {
-  throw new Error('loadStore No implementado');
+  if (localStorage.getItem('todos')) {
+    state = JSON.parse(localStorage.getItem('todos'));
+  }
+};
+
+const saveStateToLocalStorage = () => {
+  localStorage.setItem('todos', JSON.stringify(state));
 };
 
 const getTodos = (filter = filtersValue.All) => {
@@ -42,6 +44,8 @@ const addTodo = (description) => {
   }
 
   state.todos.push(new TodoModel(description));
+
+  saveStateToLocalStorage();
 };
 
 const toggleTodo = (todoId) => {
@@ -51,18 +55,26 @@ const toggleTodo = (todoId) => {
       done: todo.id === todoId ? !todo.done : todo.done
     };
   });
+
+  saveStateToLocalStorage();
 };
 
 const deleteTodo = (todoId) => {
   state.todos = state.todos.filter(todo => todo.id !== todoId);
+
+  saveStateToLocalStorage();
 };
 
 const deleteTodoCompleted = () => {
   state.todos = state.todos.filter(todo => !todo.done);
+
+  saveStateToLocalStorage();
 };
 
 const setfilterTodos = (filter = filtersValue.All) => {
   state.filter = filter;
+
+  saveStateToLocalStorage();
 };
 
 const getCurrentFilter = () => {
@@ -72,6 +84,7 @@ const getCurrentFilter = () => {
 export default {
   initStore,
   loadStore,
+  saveStateToLocalStorage,
   getTodos,
   addTodo,
   toggleTodo,
