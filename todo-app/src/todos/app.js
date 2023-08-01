@@ -45,4 +45,11 @@ export const App = (elementId) => {
       displayTodos();
     }
   });
+
+  const deleteCompleted = document.querySelector('.clear-completed');
+
+  deleteCompleted.addEventListener('click', (e) => {
+    store.deleteTodoCompleted();
+    displayTodos();
+  });
 };
