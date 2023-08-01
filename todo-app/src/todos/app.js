@@ -18,4 +18,15 @@ export const App = (elementId) => {
       displayTodos();
     }
   )();
+
+  const descriptioTodo = document.querySelector('#new-todo-input');
+
+  descriptioTodo.addEventListener('keyup', (e) => {
+    if (e.keyCode !== 13) return;
+    if (e.target.value.trim().length === 0) return;
+
+    store.addTodo(e.target.value);
+    displayTodos();
+    descriptioTodo.value = '';
+  });
 };
