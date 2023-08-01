@@ -3,7 +3,7 @@ export const htmlTodos = (todo) => {
     <div class="view">
       <input class="toggle" type="checkbox" ${todo.done ? "checked" : ""}>
       <label>${todo.description}</label>
-      <button class="destroy"></button>
+      <button id="delete" class="destroy"></button>
     </div>
     <input class="edit" value="${todo.description}">
   `;

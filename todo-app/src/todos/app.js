@@ -37,4 +37,12 @@ export const App = (elementId) => {
     store.toggleTodo(elementWithId.getAttribute('data-id'));
     displayTodos();
   });
+
+  divCheckList.addEventListener('click', (e) => {
+    if (e.target.getAttribute('id') === 'delete') {
+      const elementWithId = e.target.closest('[data-id]');
+      store.deleteTodo(elementWithId.getAttribute('data-id'));
+      displayTodos();
+    }
+  });
 };
