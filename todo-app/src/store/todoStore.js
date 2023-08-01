@@ -19,6 +19,29 @@ const initStore = () => {
   console.log('init store inicializado');
 };
 
+const loadStore = () => {
+  throw new Error('loadStore No implementado');
+};
+
+const addTodo = (description) => { };
+
+const toggleTodo = (todoId) => { };
+
+const deleteTodo = (todoId) => { };
+
+const deleteTodoCompleted = () => { };
+
+const setfilterTodos = (filter = filtersValue.All) => { };
+
+const getCurrentFilter = () => { };
+
 export default {
-  initStore
+  initStore,
+  loadStore,
+  addTodo,
+  toggleTodo,
+  deleteTodo,
+  deleteTodoCompleted,
+  setfilterTodos,
+  getCurrentFilter
 }
