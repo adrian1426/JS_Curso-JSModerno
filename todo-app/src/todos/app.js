@@ -7,6 +7,10 @@ export const App = (elementId) => {
   const displayTodos = () => {
     const todos = store.getTodos(store.getCurrentFilter());
     renderTodos("#todo-list", todos);
+
+    const pendingcount = document.querySelector('#pending-count');
+    const count = store.getTodos().filter(todo => !todo.done).length;
+    pendingcount.textContent = count;
   }
 
   (
