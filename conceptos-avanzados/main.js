@@ -1,6 +1,7 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
+import { envitonmentsComponent } from './src/renders';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -15,3 +16,7 @@ document.querySelector('#app').innerHTML = `
     </div>
   </div>
 `;
+
+const card = document.querySelector('.card');
+
+envitonmentsComponent(card);
