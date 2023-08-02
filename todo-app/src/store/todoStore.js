@@ -1,6 +1,6 @@
 import { TodoModel } from "../todos/models/todoModel";
 
-const filtersValue = {
+export const filtersValue = {
   All: 'ALL',
   Completed: 'COMPLETED',
   Pending: 'PENDING'

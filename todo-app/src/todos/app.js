@@ -1,5 +1,5 @@
 import appHtml from './app.html?raw';
-import store from '../store/todoStore';
+import store, { filtersValue } from '../store/todoStore';
 import { renderTodos } from './renderTodos';
 
 export const App = (elementId) => {
@@ -50,6 +50,37 @@ export const App = (elementId) => {
 
   deleteCompleted.addEventListener('click', (e) => {
     store.deleteTodoCompleted();
+    displayTodos();
+  });
+
+  const filterAll = document.querySelector('#filter-all');
+  const filterPending = document.querySelector('#filter-pending');
+  const filterCompleted = document.querySelector('#filter-completed');
+
+  filterAll.addEventListener('click', (e) => {
+    filterAll.classList.add('selected');
+    filterPending.classList.remove('selected');
+    filterCompleted.classList.remove('selected');
+
+    store.setfilterTodos(filtersValue.All);
+    displayTodos();
+  });
+
+  filterPending.addEventListener('click', (e) => {
+    filterAll.classList.remove('selected');
+    filterPending.classList.add('selected');
+    filterCompleted.classList.remove('selected');
+
+    store.setfilterTodos(filtersValue.Pending);
+    displayTodos();
+  });
+
+  filterCompleted.addEventListener('click', (e) => {
+    filterAll.classList.remove('selected');
+    filterPending.classList.remove('selected');
+    filterCompleted.classList.add('selected');
+
+    store.setfilterTodos(filtersValue.Completed);
     displayTodos();
   });
 };
