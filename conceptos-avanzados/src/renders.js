@@ -14,7 +14,13 @@ export const envitonmentsComponent = (element) => {
 
 
 export const callbackComponent = (element) => {
-  findHero("5d86371f2343e37870b91ef1", (heroe) => {
+  findHero("5d86371f2343e37870b91ef1", (error, heroe) => {
+
+    if (error) {
+      element.innerHTML = error;
+      return;
+    }
+
     element.innerHTML = heroe.name;
   });
 };
@@ -22,5 +28,10 @@ export const callbackComponent = (element) => {
 const findHero = (id, callback) => {
   const heroe = heroes.find(hero => hero.id === id);
 
-  callback(heroe);
+  if (!heroe) {
+    callback(`No se encontró el heroe con el id: ${id}`);
+    return;
+  }
+
+  callback(null, heroe);
 };
