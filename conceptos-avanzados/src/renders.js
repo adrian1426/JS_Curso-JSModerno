@@ -35,3 +35,17 @@ const findHero = (id, callback) => {
 
   callback(null, heroe);
 };
+
+
+const findHeroPromises = (id) => {
+  return new Promise((resolve, reject) => {
+    const heroe = heroes.find(hero => hero.id === id);
+
+    if (!heroe) {
+      reject(`No se encontró el heroe con el id: ${id}`);
+      return;
+    }
+
+    resolve(heroe);
+  });
+};
