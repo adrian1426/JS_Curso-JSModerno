@@ -1,3 +1,5 @@
+import heroes from './data/heroes.json';
+
 export const envitonmentsComponent = (element) => {
   const envs = import.meta.env;
 
@@ -8,4 +10,17 @@ export const envitonmentsComponent = (element) => {
   `;
 
   element.innerHTML = html;
+};
+
+
+export const callbackComponent = (element) => {
+  findHero("5d86371f2343e37870b91ef1", (heroe) => {
+    element.innerHTML = heroe.name;
+  });
+};
+
+const findHero = (id, callback) => {
+  const heroe = heroes.find(hero => hero.id === id);
+
+  callback(heroe);
 };
