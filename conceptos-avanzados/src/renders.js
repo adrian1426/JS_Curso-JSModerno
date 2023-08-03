@@ -13,6 +13,7 @@ export const envitonmentsComponent = (element) => {
 };
 
 
+
 export const callbackComponent = (element) => {
   findHero("5d86371f2343e37870b91ef1", (error, heroe) => {
 
@@ -36,6 +37,17 @@ const findHero = (id, callback) => {
   callback(null, heroe);
 };
 
+
+
+export const promesaComponents = (element) => {
+  const renderHero = (hero) => {
+    element.innerHTML = hero.name;
+  }
+
+  findHeroPromises("5d86371f2343e37870b91ef1")
+    .then(renderHero)
+    .catch(error => console.log(error));
+};
 
 const findHeroPromises = (id) => {
   return new Promise((resolve, reject) => {
