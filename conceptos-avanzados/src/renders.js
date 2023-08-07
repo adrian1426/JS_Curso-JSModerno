@@ -77,9 +77,12 @@ const findHeroAsync = async (id) => {
 };
 
 export const asyncComponents = async (element) => {
-
   const id1 = "5d86371f2343e37870b91ef1";
-  const heroe = await findHeroAsync(id1);
 
-  element.innerHTML = heroe.name;
+  try {
+    const heroe = await findHeroAsync(id1);
+    element.innerHTML = heroe.name;
+  } catch (error) {
+    element.innerHTML = error;
+  }
 };
