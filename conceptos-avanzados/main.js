@@ -1,7 +1,7 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
-import { callbackComponent, envitonmentsComponent, promesaComponents } from './src/renders';
+import { asyncComponents, callbackComponent, envitonmentsComponent, promesaComponents } from './src/renders';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -19,4 +19,4 @@ document.querySelector('#app').innerHTML = `
 
 const card = document.querySelector('.card');
 
-promesaComponents(card);
+asyncComponents(card);

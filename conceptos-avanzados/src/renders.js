@@ -61,3 +61,25 @@ const findHeroPromises = (id) => {
     resolve(heroe);
   });
 };
+
+//Promise.All regresa todas las respuestas como un array
+//Primise.race regresa una sola respuesta, el que responde más rapido
+
+
+const findHeroAsync = async (id) => {
+  const heroe = heroes.find(hero => hero.id === id);
+
+  if (!heroe) {
+    throw `No se encontró heroe: ${id}`;
+  }
+
+  return heroe;
+};
+
+export const asyncComponents = async (element) => {
+
+  const id1 = "5d86371f2343e37870b91ef1";
+  const heroe = await findHeroAsync(id1);
+
+  element.innerHTML = heroe.name;
+};
