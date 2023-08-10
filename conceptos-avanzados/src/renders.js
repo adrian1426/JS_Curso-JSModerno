@@ -86,3 +86,21 @@ export const asyncComponents = async (element) => {
     element.innerHTML = error;
   }
 };
+
+
+export const functionGeneratorComponent = (element) => {
+
+  const valueFGenerator = myFisrtFunction();
+  const val1 = valueFGenerator.next();
+  const val2 = valueFGenerator.next();
+
+  element.innerHTML = val1.value;
+};
+
+function* myFisrtFunction() {
+  yield 'primer valor';
+  yield 'segundo valor';
+  yield 'tercer valor';
+
+  return 'el return valor';
+}
