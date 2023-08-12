@@ -104,3 +104,36 @@ function* myFisrtFunction() {
 
   return 'el return valor';
 }
+
+
+
+export const functionGeneratorAsyncComponent = async (element) => {
+  const heroeGenerator = getHeroesFGenerator();
+  let isFinished = false;
+
+  do {
+    const { value, done } = await heroeGenerator.next();
+    isFinished = done;
+
+    if (isFinished) break;
+
+    element.innerHTML = value;
+  } while (!isFinished);
+};
+
+async function* getHeroesFGenerator() {
+  for (const heroe of heroes) {
+    await sleep();
+    yield heroe.name;
+  }
+
+  return 'No hay mas';
+}
+
+const sleep = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 1000)
+  })
+};

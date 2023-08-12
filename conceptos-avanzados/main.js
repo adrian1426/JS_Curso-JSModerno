@@ -1,7 +1,7 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
-import { asyncComponents, callbackComponent, envitonmentsComponent, functionGeneratorComponent, promesaComponents } from './src/renders';
+import { asyncComponents, callbackComponent, envitonmentsComponent, functionGeneratorAsyncComponent, functionGeneratorComponent, promesaComponents } from './src/renders';
 import { forAwaitComponent } from './src/for-await';
 
 document.querySelector('#app').innerHTML = `
@@ -20,4 +20,4 @@ document.querySelector('#app').innerHTML = `
 
 const card = document.querySelector('.card');
 
-functionGeneratorComponent(card);
+functionGeneratorAsyncComponent(card);
