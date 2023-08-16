@@ -8,4 +8,6 @@ export const usersApp = async (element) => {
   element.innerHTML = 'Loading...';
 
   await userStore.loadNextPage();
+
+  console.log(userStore.getUsers());
 };
