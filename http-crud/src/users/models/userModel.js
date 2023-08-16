@@ -5,7 +5,7 @@ export class UserModel {
     this.balance = user.balance;
     this.avatar = user.avatar;
     this.firstName = user.firstName;
-    this.lasName = user.lastName;
+    this.lastName = user.lastName;
     this.gender = user.gender;
   }
 }
