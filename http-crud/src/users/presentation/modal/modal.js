@@ -9,6 +9,7 @@ export const showModal = () => {
 
 export const hideModal = () => {
   modal.classList.add('hide-modal');
+  form?.reset();
 };
 
 /**
@@ -35,5 +36,22 @@ export const renderModal = (element) => {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    const formData = new FormData(form);
+    const userData = {};
+
+    for (const [key, value] of formData) {
+      userData[key] = value;
+
+      if (key === 'balance') {
+        userData[key] = Number(value);
+      }
+
+      if (key === 'isActive') {
+        userData[key] = value === 'on';
+      }
+    }
+
+    hideModal();
   });
 };
