@@ -1,3 +1,4 @@
+import { userPostMapper } from "../mappers/userPostMapper";
 import { UserModel } from "../models/userModel";
 
 const createUser = async (user) => {
@@ -16,7 +17,9 @@ const createUser = async (user) => {
 };
 
 export const saveUser = async (data) => {
-  const user = new UserModel(data);
+  if (!data.firstName || !data.lastName) return;
+
+  const user = userPostMapper(new UserModel(data));
 
   const createUserResult = await createUser(user);
   return createUserResult;

@@ -1,4 +1,4 @@
-import { userToModel } from "../mappers/userMapper";
+import { userToModel } from "../mappers/userGetMapper";
 
 /** 
 *
