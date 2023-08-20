@@ -1,4 +1,5 @@
 import userStore from '../../store/userStore';
+import { deleteUser } from '../../use-cases/deleteUserById';
 import { showModal } from '../modal/modal';
 import './table.css';
 
@@ -25,7 +26,7 @@ const createTableElement = () => {
   return table;
 };
 
-const userSelectedListener = (event) => {
+const userSelectedListener = async (event) => {
   const className = event.target.classList.value;
   let id;
 
@@ -35,7 +36,10 @@ const userSelectedListener = (event) => {
   }
 
   if (className.includes('delete-user')) {
-
+    id = event.target.getAttribute('data-id');
+    await deleteUser(id);
+    await userStore.reloadPage();
+    renderTable();
   }
 };
 
