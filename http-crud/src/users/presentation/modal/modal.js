@@ -1,6 +1,6 @@
 import htmlModal from './modal.html?raw';
-import './modal.css';
 import { getUserById } from '../../use-cases/getUserById';
+import './modal.css';
 
 let modal, form;
 let loadedUser = {};
@@ -34,7 +34,7 @@ export const hideModal = () => {
  * @param {HTMLDivElement} element
  * @returns {any}
  */
-export const renderModal = (element, saveUserCallback) => {
+export const renderModal = (element, saveUpdateUserCallback) => {
   if (modal) return;
 
   modal = document.createElement('div');
@@ -69,7 +69,7 @@ export const renderModal = (element, saveUserCallback) => {
       }
     }
 
-    await saveUserCallback(userData);
+    await saveUpdateUserCallback(userData);
 
     hideModal();
   });

@@ -4,6 +4,7 @@ import { renderModal } from './presentation/modal/modal';
 import { renderTable } from './presentation/table/table';
 import userStore from './store/userStore';
 import { saveUser } from './use-cases/saveUsers';
+import { updateUser } from './use-cases/updateUser';
 
 /**
  * 
@@ -20,7 +21,8 @@ export const usersApp = async (element) => {
   renderButton(element);
   renderAddButton(element);
   renderModal(element, async (data) => {
-    const user = await saveUser(data);
+    const user = !data.id ? await saveUser(data) : await updateUser(data);
+
     userStore.onUserChanged(user);
     renderTable(element);
   });
