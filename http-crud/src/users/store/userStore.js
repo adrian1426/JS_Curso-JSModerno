@@ -1,3 +1,5 @@
+import { userToModel } from "../mappers/userGetMapper";
+import { UserModel } from "../models/userModel";
 import { loadUsersByPage } from "../use-cases/loadUsersByPage";
 
 const state = {
@@ -23,7 +25,21 @@ const loadPreviousPage = async () => {
   }
 };
 
-const onUserChanged = () => { };
+const onUserChanged = (user) => {
+  if (!user.id) {
+    if (state.users.length < 10) {
+      state.users.push(userToModel(user));
+    }
+  } else {
+    state.users = state.users.map(u => {
+      if (u.id === user.id) {
+        return userToModel(user);
+      }
+
+      return u;
+    });
+  }
+};
 
 const reloadPage = async () => { };
 
