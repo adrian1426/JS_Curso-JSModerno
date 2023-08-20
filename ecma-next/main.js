@@ -1,5 +1,5 @@
 import './style.css';
-import './src/arrays';
+import './src/arrays-with';
 
 document.querySelector('#app').innerHTML = `
   <div>
