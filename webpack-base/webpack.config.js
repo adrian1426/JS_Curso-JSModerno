@@ -1,8 +1,25 @@
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   mode: 'development',
+  output: {
+    clean: true
+  },
   module: {
-    rules: []
+    rules: [
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+        options: {
+          sources: false
+        }
+      }
+    ]
   },
   optimization: {},
-  plugins: []
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html'
+    })
+  ]
 }
